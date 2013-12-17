@@ -1,4 +1,4 @@
-var nbReseaux = 0;
+var nbReseaux = 600;
 var nbMachines = 0;
 
 var w = 400;
@@ -9,25 +9,42 @@ $("#logopNET").attr("width", attrw);
 $("#logopNET").attr("height", attrh);
 
 
+function mapRange(value, low1, high1, low2, high2) {
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+}
+
+function getRandomFloat(min, max) {
+    return Math.random() * (max - min + 1) + min;
+}
+
 function dessineLogo() {
     var cto = document.getElementById("logopNET");
     var ctx = cto.getContext("2d");
     
-    /*### Cercle avec 4 courbes de bézier ###*/
+    /*### Mise en place des cercles ###*/
     ctx.beginPath();
-    ctx.moveTo(200,20);
-    ctx.bezierCurveTo(380,20,380,20,380,200);
-    ctx.bezierCurveTo(380,380,380,380,200,380);
-    ctx.bezierCurveTo(20,380,20,380,20,200);
-    ctx.bezierCurveTo(20,20,20,20,200,20);
+    ctx.lineWidth=1;
     
+for (var i = 0; i < nbReseaux; i++) {
     ctx.moveTo(200,20);
-    ctx.bezierCurveTo(200,20,380,200,380,200);
-    ctx.bezierCurveTo(380,200,200,380,200,380);
-    ctx.bezierCurveTo(25,340,30,360,20,200);
-    ctx.bezierCurveTo(25,30,26,40,200,20);
+    ctx.bezierCurveTo(
+        getRandomFloat(200,380),getRandomFloat(20,100),
+        getRandomFloat(200,380),getRandomFloat(20,200),
+        380,200);
+    ctx.bezierCurveTo(
+        getRandomFloat(200,380),getRandomFloat(200,380),
+        getRandomFloat(200,380),getRandomFloat(200,380),
+        200,380);
+    ctx.bezierCurveTo(
+        getRandomFloat(20,200),getRandomFloat(200,380),
+        getRandomFloat(20,200),getRandomFloat(200,380),
+        20,200);
+    ctx.bezierCurveTo(
+        getRandomFloat(20,200),getRandomFloat(20,200),
+        getRandomFloat(20,200),getRandomFloat(20,200),
+        200,20);
+    }
     ctx.stroke();
-       
 }
 
 dessineLogo();
