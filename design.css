@@ -1,0 +1,10 @@
+@font-face {
+	font-family: 'Reglo';
+	src: url('Reglo.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+#logopNET {
+    border:1px dotted black;
+
+    margin:0 auto;
+}
